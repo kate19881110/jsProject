@@ -1,0 +1,75 @@
+/* box-sizing 作用控制 weight 與 height作用對象空間 */
+*,*::before,*::after{
+    box-sizing: border-box;
+    font-family: Gotham Rounded, sans-serif;
+    font-weight: normal;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, yellow, green);
+}
+
+/*
+https://ithelp.ithome.com.tw/articles/10231584
+1. grid 與 flex 都是內外容器，
+2. grid 屬性: 
+   2-1 ) fr: 等分概念，類似 flex 中 flex-grow，ex:1fr
+   2-2 ) repeat() : 可重複某值，傳入兩個參數，次數與值
+   2-3 ) minmax() : 將值限定某區間，傳入兩個參數，最小值與最大值
+3. 自定義區塊
+
+align-content: center;
+https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-content
+*/
+.calculator-grid{
+    display: grid;
+    justify-content: center;
+    align-content: center; /* 將項目放置在中點*/
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px); /* 一行重複4個，每個平均寬度 100px */
+    grid-template-rows: minmax(120px,auto) repeat(5, 100px);  /* 5列 每個平均高度 100px，高度大小至少 120px，或者等分*/
+}
+
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, .75);
+}
+
+.calculator-grid > button:hover{
+    background-color: rgba(255, 255, 255, .9);
+}
+
+.span-two {
+    grid-column: span 2;
+}
+
+/*
+word-wrap : break-word 文字太長，允許在容器裡任意斷行
+word-break :  break-all: 英文和 CJK 會在任意位址斷開。
+*/
+.output{
+    grid-column: 1/-1;
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.output .previous-operand{
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+}
+
+.output .current-operand{
+    color: white;
+    font-size: 2.5rem;
+}
