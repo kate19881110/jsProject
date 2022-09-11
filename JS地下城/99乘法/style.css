@@ -1,0 +1,30 @@
+.container{
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+}
+
+.container .table{
+    border: 1px solid green;
+    max-height: 600px;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container .table .gridList{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+
+.container .table .gridList .card{
+    border: 1px solid blue;
+    min-width: 300px;
+    min-height: 200px;
+    margin-bottom: 10px;
+    text-align: center;
+}
